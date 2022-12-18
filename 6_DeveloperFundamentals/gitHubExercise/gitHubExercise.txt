@@ -1,0 +1,39 @@
+# Hatchways ****GitHub Exercise****
+
+## **Part I**
+
+Let\'92s start by taking a bit of time to practice the git workflow below. It is so valuable to just practice this workflow a couple times, since you will most likely doing it professionally as well as in your individual projects and open source contributions. Here are some things to do.
+
+1. Create a local repository and add and commit some files
+
+cd Desktop/SE_Career/Unit6
+mkdir gitHubExercise
+cd gitHubExercise
+git init
+touch index.html app.css app.js
+git add .
+git commit -m "added first files"
+
+2. Create a remote repository and push your code from the local repo to the remote
+
+git remote add origin git@github.com:nicholejmurphy/gitHubExercise.git
+git push -u origin main
+
+3. Create a local branch and add and commit some files
+
+git checkout -b firstBranch
+touch app.js app.css
+git add .
+git commit -m "added js and css files"
+
+4. Push that local branch to GitHub to create a remote branch
+
+git push --set-upstream origin firstBranch
+
+
+## **Part II - Put your JavaScript Timers Exercise on GitHub pages**
+
+Using GitHub pages, deploy your JavaScript Timers Exercise from the previous unit so that you can share them with anyone!}
+
+https://nicholejmurphy.github.io/memoryGame/
+ 
