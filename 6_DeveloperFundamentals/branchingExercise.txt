@@ -1,0 +1,6 @@
+1. git branch -or- git checkout -b
+2. fast forward: when the merge is more straightforward and the commits are easier to place chronologically.
+3. recursive: when commits don't happen chronologically and the merge cannot place them easily.
+4. git checkout
+5. git branch -d -or- git checkout -D
+6. Merge conflicts happen when there are nested files in branches that do not merge well will files in the higher branches (branch merging into). There may be code overlap and the terminal can't decide which code to keep/remove.

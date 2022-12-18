@@ -1,0 +1,146 @@
+
+body {
+    margin: 0;
+}
+section#header {
+    background-color: rgb(51, 62, 82);
+    color: whitesmoke;
+    margin: auto;
+    width: 100%;
+    padding-bottom: 40px;
+    min-width: 710px;
+}
+
+#title div {
+    margin: auto;
+}
+
+#header h1 {
+    font-family: 'Teko', sans-serif;
+    font-size: 100px;
+    /* min-width: 710px; */
+    margin: auto;
+    text-align: center;
+    height: 130px;
+    text-shadow: 1px 1px 3px darkgray;
+}
+
+#header p {
+    font-family: 'Montserrat', sans-serif;
+    margin: auto;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+form {
+    padding-left: 10%;
+    padding-right: 10%;
+
+}
+
+.inputs {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+input {
+    width: 80%;
+    align-self: flex-end;
+    padding: 10px;
+}
+
+.inputs label {
+    width: 200px;
+    min-width: 180px;
+    padding: 10px;
+    font-size: 120%;
+}
+
+.buttons {
+    display: flex;
+}
+
+button {
+    margin-left: auto;
+    margin-right: 1%;
+    margin-top: 20px;
+    padding: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 100%;
+}
+
+div#drop-zone {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    flex-wrap: wrap;
+}
+
+.meme-container {
+    /* background-color: black; */
+    margin: 15px;
+    width: 200px;
+    height: 200px;
+    border-radius: 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    filter: drop-shadow(0 0 0.5rem lightgray);
+    align-items: center;
+}
+
+.delete {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    width: 200px;
+    background-color: black;
+    opacity: 0;
+    z-index: 1;
+    border-radius: 3%;
+    opacity: 0.7;
+    transition: .5s ease;
+    color: darkgrey;
+    font-size: 70px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: auto;
+}
+
+.meme-text {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bolder;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    letter-spacing: 1px;
+    font-size: 25px;
+}
+
+
+.meme-text.top {
+    position: absolute;
+    top: 3px;
+    
+}
+
+.meme-text.bottom {
+    position: absolute;
+    bottom: 3px;
+}
+
+#meme-image {
+    position: absolute;
+    border-radius: 2%;
+    width: 200px;
+    height: 200px;
+    object-fit:cover;
+}
+
+

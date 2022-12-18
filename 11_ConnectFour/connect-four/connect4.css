@@ -1,0 +1,92 @@
+h1 {
+  font-family: "Teko", sans-serif;
+  font-size: 100px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+  margin-top: 30px;
+  color: peru;
+}
+
+.intro {
+  font-family: "Montserrat", sans-serif;
+  /* display: flex; */
+  /* justify-content: center; */
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+#players {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px;
+}
+
+#player-one {
+  background-color: teal;
+  border-radius: 5%;
+  color: white;
+  padding: 10px;
+  box-shadow: 1px 1px 2px lightgray;
+  font-family: "Montserrat", sans-serif;
+}
+
+#player-two {
+  background-color: darkmagenta;
+  border-radius: 5%;
+  color: white;
+  padding: 10px;
+  box-shadow: 1px 1px 2px lightgray;
+  font-family: "Montserrat", sans-serif;
+}
+
+#game {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 200px;
+}
+
+/* game board table */
+#board {
+  background-color: goldenrod;
+}
+
+#board td {
+  width: 50px;
+  height: 50px;
+  border: solid 5px goldenrod;
+  background-color: white;
+  border-radius: 50%;
+}
+
+/* pieces are div within game table cells: draw as colored circles */
+
+.piece {
+  margin: 5px;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+}
+
+.piece.p1 {
+  background-color: teal;
+}
+
+.piece.p2 {
+  background-color: darkmagenta;
+}
+
+/* column-top is table row of clickable areas for each column */
+#column-top td {
+  border: dashed 4px white;
+  background-color: lightslategray;
+  /* margin: 0;
+  padding: 0; */
+}
+
+#column-top td:hover {
+  background-color: white;
+}

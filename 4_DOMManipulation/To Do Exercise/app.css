@@ -1,0 +1,25 @@
+body {
+    background-color: lavenderblush;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: darkslategrey;
+}
+
+p {
+    font-size: 12px;
+    font-style: italic;
+    color: darkslategrey;
+    padding-bottom: -10px;
+    margin-bottom: -10px;
+}
+
+ul {
+    padding-top: 10px;
+}
+
+.completed {
+    color: rebeccapurple;
+    text-decoration: line-through;
+}

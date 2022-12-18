@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,500&family=Luckiest+Guy&family=Montserrat&family=Teko:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="app.css">
+    <title>Meme Generator!</title>
+</head>
+<body>
+    <section id="header">
+        <div id="title">
+            <h1>MEME GENERATOR</h1>
+            <p>Fill out the form to build your next meme</p>
+        </div>
+        <form action="">
+            <div class="inputs">
+                <label for="url">Img URL</label>
+                <input type="text" id="url" name="img" placeholder="What's the URL for your meme image?"><br>
+            </div>
+            <div class="inputs">
+                <label for="top-text">Text on Top</label>
+                <input type="text" id="top-text" name="top-text" placeholder="(Optional) What text do you want at the top of your meme?"><br>
+            </div>
+            <div class="inputs">
+                <label for="bottom-text">Text on Bottom</label>
+                <input type="text" id="bottom-text" name="bottom-text" placeholder="(Optional) What text do you want at the bottom of your meme?"><br>
+            </div>
+            <div>
+                <button class="buttons" type="submit">Create Meme</button>
+            </div>
+        </form>
+    </section>
+    <div id="drop-zone">
+        <!-- EXAMPLE BELOW -->
+        <!-- <div class="meme-container">
+            <!-- <div class="overlay">DELETE</div>
+            <img id="meme-image" src="https://t3.ftcdn.net/jpg/02/95/94/94/360_F_295949484_8BrlWkTrPXTYzgMn3UebDl1O13PcVNMU.jpg" alt="">
+            <div class="meme-text top">FEED ME HUMAN</div>
+            <div class="meme-text bottom">I AM HUNGRY</div> -->
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Connect 4</title>
+    <link href="connect4.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,500&family=Luckiest+Guy&family=Montserrat&family=Teko:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>CONNECT FOUR</h1>
+    <div class="intro">
+      Player 1 and 2 alternate turns. On each turn, a piece is dropped down a
+      column until a player gets four-in-a-row (horizontally, vertically, or
+      diagonally) or until board fills (tie).
+    </div>
+    <p id="players">
+      <span id="player-one">Player One</span>
+      <span id="player-two">Player Two</span>
+    </p>
+    <div id="game">
+      <table id="board"></table>
+    </div>
+    <script src="connect4.js"></script>
+  </body>
+</html>
