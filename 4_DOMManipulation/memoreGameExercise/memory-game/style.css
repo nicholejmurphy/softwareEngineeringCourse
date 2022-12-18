@@ -1,0 +1,92 @@
+* {
+  scroll-behavior: smooth;
+}
+
+#topOfBody {
+  background-color: white;
+  filter: drop-shadow(0 0 0.5rem grey);
+  margin: auto;
+  width: 450px;
+  height: 400px;
+  text-align: center;
+  border-radius: 0.5%;
+  align-items: center;
+  margin-bottom: 500px;
+}
+
+h1 {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 600%;
+  color: teal;
+  padding-top: 50px;
+  margin-bottom: 0;
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;
+  color: darkslategray;
+  font-weight: 700;
+}
+
+a {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 180%;
+  color: lightseagreen;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: darkslategray;
+  margin-bottom: 0;
+}
+
+#your-score {
+  margin: auto;
+  text-align: center;
+}
+
+#your-score p {
+  background-color: white;
+  filter: drop-shadow(0 0 0.5rem grey);
+  margin: 10px;
+  border-radius: 0.5%;
+  align-items: center;
+  display: inline-block;
+  padding: 10px;
+}
+
+#game-board {
+  margin-bottom: 150px;
+}
+
+#game div {
+  border: 1px solid darkslategray;
+  border-radius: 5%;
+  width: 30%;
+  max-width: 100px;
+  height: 100px;
+  margin: 10px;
+  display: inline-block;
+}
+
+#game {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  max-width: 610px;
+  min-width: 610px;
+  width: 80%;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+#restart {
+  margin: auto;
+  display: flex;
+  position: relative;
+  text-align: center;
+  padding: 10px;
+  font-family: 'Montserrat', sans-serif;
+  color: darkslategray;
+  font-size: 15px;
+}

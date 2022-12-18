@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Memory Game!</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,500&family=Luckiest+Guy&family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,500&family=Luckiest+Guy&family=Montserrat&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <section id="topOfBody">
+      <h1>Memory Game!</h1>
+      <p>LEADERBOARD TOP SCORES <br>
+        Guesses: <span id="lbGuesses">0</span> |
+        Time: <span id="lbTime">0</span>
+      </p>
+      <a id="start" href="#game">CLICK HERE TO START GAME</a>
+    </section>
+    <section id="your-score">
+      <h2>YOUR SCORE</h2>
+      <p>
+        Matches: <span id="match">0</span> |
+        Guesses: <span id="guess">0</span> |
+        Timer: <span id="time">0</span> seconds
+      </p>
+    </section>
+    <section id="game-board">
+      <div id="game">
+      </div>
+      <button id="restart">Restart Game</button>
+    </section> 
+    <script src="script.js"></script>
+  </body>
+</html>
