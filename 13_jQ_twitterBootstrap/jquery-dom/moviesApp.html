@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Part Two - MoviesApp!</title>
+    <link rel="stylesheet" href="movies.css" />
+  </head>
+  <body>
+    <h1>Movies App!</h1>
+    <form action="" id="submission">
+      <input type="text" id="title-input" placeholder="Movie Title" />
+      <label for="rating"
+        >Rating
+        <input type="number" id="rating-input" name="rating" min="0" max="10" />
+        out of 10</label
+      >
+      <input type="submit" id="submit-movie" />
+    </form>
+
+    <h2>Movie List:</h2>
+    <hr />
+    <!-- <label for="submit">Sort movies by:</label>
+    <input type="submit" id="movie-sort" value="Movie" />
+    <input type="submit" id="rating-sort" value="Rating" /> -->
+    <form action="" id="sort-btns">
+      <label for="button">Sort list by:</label>
+      <input type="button" value="Title" id="title-sort" />
+      <input type="button" value="Rating" id="rating-sort" />
+    </form>
+
+    <div>
+      <table id="movie-list">
+        <thead>
+          <tr>
+            <td>Title</td>
+            <td class="head-tr">Rating</td>
+            <td class="head-tr">Remove</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="title">Titanic</td>
+            <td class="rating">7/10</td>
+            <td class="remove"><input type="checkbox" class="remove" /></td>
+          </tr>
+          <tr>
+            <td class="title">Marley and Me</td>
+            <td class="rating">3/10</td>
+            <td class="remove"><input type="checkbox" class="remove" /></td>
+          </tr>
+          <tr>
+            <td class="title">Sing</td>
+            <td class="rating">8/10</td>
+            <td class="remove"><input type="checkbox" class="remove" /></td>
+          </tr>
+          <tr>
+            <td class="title">Blues Brothers</td>
+            <td class="rating">6/10</td>
+            <td class="remove"><input type="checkbox" class="remove" /></td>
+          </tr>
+          <tr>
+            <td class="title">Avatar</td>
+            <td class="rating">10/10</td>
+            <td class="remove"><input type="checkbox" class="remove" /></td>
+          </tr>
+          <tr>
+            <td class="title">Princess Diaries</td>
+            <td class="rating">9/10</td>
+            <td class="remove"><input type="checkbox" class="remove" /></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous"
+    ></script>
+    <script src="movies.js"></script>
+  </body>
+</html>

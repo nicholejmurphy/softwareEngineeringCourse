@@ -1,0 +1,28 @@
+table {
+  width: 300px;
+  border: 2px solid black;
+}
+
+tbody td {
+  border: 1px solid lightgray;
+}
+
+thead {
+  font-weight: bold;
+}
+
+.remove {
+  text-align: center;
+}
+
+.rating {
+  text-align: center;
+}
+
+thead tr .head-tr {
+  text-align: center;
+}
+
+#sort-btns {
+  margin-bottom: 10px;
+}
