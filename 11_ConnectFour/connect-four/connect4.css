@@ -46,7 +46,7 @@ h1 {
   display: flex;
   justify-content: center;
   margin-top: 40px;
-  margin-bottom: 200px;
+  margin-bottom: 20px;
 }
 
 /* game board table */
@@ -83,10 +83,16 @@ h1 {
 #column-top td {
   border: dashed 4px white;
   background-color: lightslategray;
-  /* margin: 0;
-  padding: 0; */
 }
 
 #column-top td:hover {
   background-color: white;
+}
+
+#restart {
+  border-radius: 5%;
+  color: white;
+  padding: 10px;
+  box-shadow: 1px 1px 2px lightgray;
+  font-family: "Montserrat", sans-serif;
 }
