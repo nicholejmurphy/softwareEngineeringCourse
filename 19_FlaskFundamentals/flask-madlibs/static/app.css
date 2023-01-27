@@ -1,0 +1,21 @@
+body {
+  background-image: url("/static/bryan-garces-zwo-0E7l1ZI-unsplash.jpg");
+  background-size: cover;
+}
+
+div.container {
+  border-radius: 20;
+  background-color: rgb(239, 239, 239);
+  filter: drop-shadow(0 0 0.75rem grey);
+  min-width: 500px;
+}
+
+nav {
+  filter: drop-shadow(0 0 0.75rem grey);
+}
+
+label {
+  font-weight: bolder;
+  /* font-size: 10rem; */
+  text-transform: capitalize;
+}

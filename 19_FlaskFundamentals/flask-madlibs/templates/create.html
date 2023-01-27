@@ -1,0 +1,42 @@
+<!-- Uses 'base.html as template' -->
+{% extends 'base.html' %}
+
+<!-- Updates HTML title -->
+{% block title %}Create Your MadLib!{% endblock %}
+
+<!-- Updates HTML header -->
+{% block h1 %}{{chosen_story}} MadLib{% endblock %}
+
+<!-- Creates a dynamic HTML form that a user can fill in to make their own story-->
+{% block content %}
+<form action="/dev_story/{{chosen_story}}">
+  {% for prompt in prompts %}
+  <div class="form-group row">
+    <label for="{{prompt}}" class="col-sm-3 col-form-label"
+      >{% if prompt.count('_') != 0 %} {{prompt.replace('_', ' ')}} {% else %}
+      {{prompt}} {% endif %}</label
+    >
+    <div class="col-lg-9">
+      <input
+        type="text"
+        class="prompt-input form-control"
+        name="{{prompt}}"
+        id="{{prompt}}"
+        placeholder="enter your word here"
+      />
+    </div>
+  </div>
+  {% endfor %}
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button
+        type="submit"
+        class="generate-story-btn btn btn-outline-info mt-2"
+        id=""
+      >
+        Generate Story
+      </button>
+    </div>
+  </div>
+</form>
+{% endblock %}

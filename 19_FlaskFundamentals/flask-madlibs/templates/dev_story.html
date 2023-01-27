@@ -1,0 +1,17 @@
+<!-- Uses 'base.html as template' -->
+{% extends 'base.html' %}
+
+<!-- Updates HTML title -->
+{% block title %}Your MadLib{% endblock %}
+
+<!-- Updates HTML header -->
+{% block h1 %}A classic {{title}} story:{% endblock %}
+
+<!-- Creates a dynamic generation of the story submitted through create.html -->
+{% block content %}
+<p class="lead text-center">"{{story}}"</p>
+<hr />
+<form action="/" class="d-flex justify-content-center">
+  <input type="submit" value="Back to Home" class="btn btn-outline-info" />
+</form>
+{% endblock %}
