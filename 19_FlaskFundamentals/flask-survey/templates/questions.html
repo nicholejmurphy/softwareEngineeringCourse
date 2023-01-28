@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+<!-- Title Of Page -->
+{% block title %}{{survey.title}}{% endblock %}
+
+<!-- Page Header -->
+{% block header %}{{survey.title}}{% endblock %}
+
+<!-- Survey Content -->
+{% block content %}
+<hr />
+<form action="/answer_question/{{index}}" method="POST">
+  <div class="form-row align-items-center">
+    <label class="mr-sm-2" for="inlineFormCustomSelect"
+      >{{survey.questions[index].question}}</label
+    >
+    <select
+      class="custom-select mr-sm-2"
+      name="answer"
+      id="inlineFormCustomSelect"
+      required
+    >
+      <option value="" selected>Choose...</option>
+      {% for choice in survey.questions[index].choices %}
+      <option value="{{choice}}">{{choice}}</option>
+      {% endfor %}
+    </select>
+    <br />
+    <input type="submit" class="btn btn-primary mt-3" value="Submit" />
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+<!-- Title Of Page -->
+{% block title %}{{survey.title}} Completed{% endblock %}
+
+<!-- Page Header -->
+{% block header %}Thank you for your feedback!{% endblock %}
+
+<!-- Survey Content -->
+{% block content %}
+<br />
+<p class="lead">The {{survey.title}} has successfully been completed.</p>
+<hr />
+<p>You may return to the <a href="/">homepage</a>.</p>
+{% endblock %}
