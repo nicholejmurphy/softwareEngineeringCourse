@@ -28,6 +28,7 @@
       <div class="row">
         <div class="col col-auto">
           <div class="jumbotron">
+            {% block flash %}<span></span>{% endblock %}
             <h1 class="display-4">
               {% block header %}{{survey.title}}{% endblock %}
             </h1>
