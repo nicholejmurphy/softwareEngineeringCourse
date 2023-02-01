@@ -36,9 +36,13 @@
             <p class="lead">{{survey.instructions}}</p>
             <hr class="my-4" />
             <p>To begin your {{survey.title}}, click 'Start Survey' below!</p>
-            <a class="btn btn-success btn-lg" href="/questions/0" role="button"
-              >Start Survey</a
-            >
+            <form action="/start-survey" method="POST">
+              <input
+                type="Submit"
+                value="Start Survey"
+                class="btn btn-success btn-lg"
+              />
+            </form>
             {% endblock %}
           </div>
         </div>
