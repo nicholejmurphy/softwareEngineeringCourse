@@ -26,7 +26,6 @@ def start_survey():
     """Empties the response list and begins the survey"""
 
     session["responses"] = []
-    print("********SESSION*******")
     index = len(session["responses"])
     return redirect(f"/questions/{index}")
 

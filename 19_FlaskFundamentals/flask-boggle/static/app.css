@@ -1,0 +1,31 @@
+.title {
+  font-family: "Mochiy Pop One", sans-serif;
+}
+
+div.board table {
+  margin: auto;
+  width: 350px;
+  font-size: 30px;
+  font-weight: 500;
+  text-align: center;
+}
+
+#guess-container {
+  max-width: 430px;
+}
+
+#guesses-label {
+  font-weight: 500;
+}
+
+ul#guesses-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  list-style-type: none;
+  list-style-position: outside;
+  padding-left: 0px;
+}
+ul#guesses-list li {
+  padding: 10px;
+}

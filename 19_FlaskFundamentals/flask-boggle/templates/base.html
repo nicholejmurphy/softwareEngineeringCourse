@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/static/app.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap");
+    </style>
+    <title>BOGGLE</title>
+  </head>
+  <body class="bg-info">
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand text-dark mb-0 h1 title" href="#">Boggle</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="#">Restart Game</a>
+          <!-- Modal for directions -->
+          <a
+            class="nav-link modal-container text-center"
+            data-toggle="modal"
+            data-target="#game-instructions"
+          >
+            How to Play
+            <div
+              class="modal fade"
+              id="game-instructions"
+              tabindex="-1"
+              aria-labelledby="gameInstructionsLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="gameInstructionsLabel">
+                      How to Play Boggle
+                    </h5>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body text-left">
+                    <p>
+                      The goal of the game is to get the highest point total. To
+                      gain points, players create words from a random assortment
+                      of letters in a 5x5 grid. Submit your answers in the text
+                      field provided below!
+                    </p>
+                    <p>
+                      Words can be created from adjacent letters – that is,
+                      letters which are horizontal or vertical neighbors of each
+                      other as well as diagonals. The letters must connect to
+                      each other in the proper sequence to spell the word
+                      correctly. This means that the next letter in the word can
+                      be above, below, left, or right of the previous letter in
+                      the word (excluding any letters previously used to
+                      construct the word).
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-warning"
+                      data-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="container my-3 w-75 shadow p-3 bg-white rounded"
+      style="max-width: 720px; min-width: 600px"
+    >
+      <!-- Header -->
+      <h1 class="display-2 text-center m-4 title">Boggle</h1>
+
+      <!-- Boggle Board -->
+      <div class="board justify-content-center">
+        <table class="table table-bordered table-dark">
+          <tbody>
+            {% for row in session['board'] %}
+            <tr class="board-row">
+              {% for char in row %}
+              <td class="board-cell border border-warning">{{char}}</td>
+              {% endfor %}
+            </tr>
+            {% endfor%}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Scoreboard -->
+      <ul
+        class="list-group list-group-horizontal d-flex-inline justify-content-center m-2"
+      >
+        <li class="list-group-item bg-info text-light">
+          Points:
+          <span
+            class="badge badge-dark text-light border border-dark"
+            id="points"
+            >0</span
+          >
+        </li>
+        <li class="list-group-item bg-info text-light">
+          Time Left:
+          <span
+            class="badge badge-dark text-light border border-dark"
+            id="time-left"
+            >0</span
+          >
+        </li>
+        <li class="list-group-item bg-info text-light">
+          High-Score:
+          <span
+            class="badge badge-dark text-light border border-dark"
+            id="high-score"
+            >{{session['high-score']}}</span
+          >
+        </li>
+      </ul>
+
+      <!-- Enter Guess Form -->
+      <div
+        class="boggle-form d-flex justify-content-center mt-3"
+        id="input-div"
+      >
+        <form class="form-inline" id="game-form">
+          <div class="form-group">
+            <label for="guess-word-input">Enter Guess:</label>
+            <input
+              type="text"
+              class="form-control mx-2 w-50"
+              id="guess-word-input"
+            />
+          </div>
+          <button type="submit" class="btn btn-warning" id="submit-btn">
+            Submit Word
+          </button>
+        </form>
+      </div>
+
+      <!-- Guess List -->
+      <div
+        id="guess-container"
+        class="container mt-3 bg-dark border rounded shadow"
+      >
+        <p class="text-warning text-center mb-0 mt-1" id="guesses-label">
+          GUESSES
+        </p>
+        <hr class="bg-warning m-0" />
+        <ul id="guesses-list"></ul>
+      </div>
+    </div>
+  </body>
+
+  <!-- Scripts Below -->
+  <script
+    src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  <script src="/static/app.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+    integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+    crossorigin="anonymous"
+  ></script>
+</html>
+
+<!-- Modal for directions
+<div class="modal-container text-center">
+    <button
+      type="button"
+      class="btn btn-outline-info btn-sm"
+      data-toggle="modal"
+      data-target="#game-instructions"
+    >
+      How to Play
+    </button>
+    <div
+      class="modal fade"
+      id="game-instructions"
+      tabindex="-1"
+      aria-labelledby="gameInstructionsLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="gameInstructionsLabel">
+              How to Play Boggle
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-left">
+            <p>
+              The goal of the game is to get the highest point total. To
+              gain points, players create words from a random assortment
+              of letters in a 5x5 grid. Submit your answers in the text
+              field provided below!
+            </p>
+            <p>
+              Words can be created from adjacent letters – that is,
+              letters which are horizontal or vertical neighbors of each
+              other as well as diagonals. The letters must connect to
+              each other in the proper sequence to spell the word
+              correctly. This means that the next letter in the word can
+              be above, below, left, or right of the previous letter in
+              the word (excluding any letters previously used to
+              construct the word).
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-info"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</nav> -->
