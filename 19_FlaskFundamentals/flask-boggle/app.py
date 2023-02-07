@@ -16,7 +16,7 @@ def boggle_home():
     session['board'] = boggle_game.make_board()
     session['guessed-words'] = []
     session['points'] = 0
-    session['high-score'] = session['high-score'] if session['high-score'] else 0
+    session['high-score'] = session.get('high-score', 0)
     return render_template('base.html')
 
 
@@ -28,8 +28,6 @@ def submit_word(word):
 
     if checked_result == "ok":
         session['points'] = session.get('points', 0) + 1
-    else:
-        flash(checked_result)
 
     return jsonify({"result": checked_result, "guess": word, "points": session['points'], "high-score": session['high-score']})
 
