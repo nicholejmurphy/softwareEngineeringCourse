@@ -79,11 +79,3 @@ class FlaskTests(TestCase):
 
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(json_res['new-high-score'], 'False')
-
-        # """Checks user score to see if they beat the highscore"""
-
-        # if int(points) > int(session['high-score']):
-        #     session['high-score'] = points
-        #     return jsonify({"new-high-score": "True"})
-        # else:
-        #     return jsonify({"new-high-score": "False"})
