@@ -1,7 +1,9 @@
 """Models for Blogly."""
-from flask_sqlalchemy import SQLAlchemy
 
+from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
+
+DEFAULT_IMAGE_URL = "https://www.freeiconspng.com/uploads/icon-user-blue-symbol-people-person-generic--public-domain--21.png"
 
 
 class User(db.Model):
@@ -17,9 +19,17 @@ class User(db.Model):
     last_name = db.Column(db.Text,
                           nullable=False)
     img_url = db.Column(db.Text, nullable=False,
-                        default="/images/default_user_img.avif")
+                        default=DEFAULT_IMAGE_URL)
+
+    @property
+    def full_name(self):
+        """Return full name of user"""
+
+        return f"{self.first_name} {self.last_name}"
 
 
 def connect_db(app):
+    """Connects this database to app.py"""
+
     db.app = app
     db.init_app = app

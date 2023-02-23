@@ -1,0 +1,15 @@
+{% extends base.html %} {% block header %}User Details{% endblock %} {% block
+content %}
+<div class="card p-3">
+  <h5 class="card-header">{{user.full_name}}</h5>
+  <div class="card-body row">
+    <div class="col">
+      <img class="card-img" src="{{user.img_url}}" alt="user-image" />
+    </div>
+    <div class="col">
+      <a href="#" class="btn btn-primary">Edit</a>
+      <a href="#" class="btn btn-danger">Delete</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
