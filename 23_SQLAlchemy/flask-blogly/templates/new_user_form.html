@@ -1,4 +1,4 @@
-{% extends base.html %} {% block header %}Create A User{% endblock %} {% block
+{% extends 'base.html' %} {% block header %}Create A User{% endblock %} {% block
 content %}
 <form action="/users/new" method="POST">
   <div class="form-group">
@@ -33,4 +33,10 @@ content %}
   </div>
   <button type="submit" class="btn btn-success">Create</button>
 </form>
+{% endblock %} {% block homeBtn %}
+<div id="home-btn" class="container text-center">
+  <a href="/users" class="btn btn-sml btn-outline-secondary shadow-sm"
+    >Return to Users</a
+  >
+</div>
 {% endblock %}

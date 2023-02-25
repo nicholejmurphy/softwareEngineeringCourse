@@ -32,4 +32,4 @@ def connect_db(app):
     """Connects this database to app.py"""
 
     db.app = app
-    db.init_app = app
+    db.init_app(app)

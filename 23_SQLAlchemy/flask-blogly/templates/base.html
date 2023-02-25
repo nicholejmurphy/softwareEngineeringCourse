@@ -10,24 +10,28 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="app.css" />
     <title>Blogly</title>
   </head>
-  <body>
+  <body id="body">
     <div class="container w-50 my-5 p-4 shadow rounded">
       <h1 class="display-4">{% block header %}Users{% endblock %}</h1>
       {% block content %}
-      <ul>
+      <div class="list-group">
         {% for user in users %}
-        <li>
-          <a href="/users/{{user.id}}">{{user.full_name}</a>
-        </li>
+        <a
+          href="/users/{{user.id}}"
+          class="list-group-item list-group-item-action"
+          >{{user.full_name}}</a
+        >
         {% endfor %}
-      </ul>
-      <button class="btn btn-sml btn-secondary" href="/users/new">
-        Add User
-      </button>
+      </div>
+      <div class="container text-center">
+        <a href="/users/new" class="btn btn-lg btn-info mt-3">Add User</a>
+      </div>
       {% endblock %}
     </div>
+    {% block homeBtn %}{% endblock %}
 
     <!-- Scripts -->
     <script

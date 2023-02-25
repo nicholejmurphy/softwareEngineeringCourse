@@ -1,15 +1,35 @@
-{% extends base.html %} {% block header %}User Details{% endblock %} {% block
+{% extends 'base.html' %} {% block header %}User Details{% endblock %} {% block
 content %}
-<div class="card p-3">
+<div class="card" id="user-card">
   <h5 class="card-header">{{user.full_name}}</h5>
   <div class="card-body row">
-    <div class="col">
-      <img class="card-img" src="{{user.img_url}}" alt="user-image" />
+    <div class="col-2 text-center" style="height: 100px">
+      <img src="{{user.img_url}}" alt="user-image" style="height: 100%" />
     </div>
-    <div class="col">
-      <a href="#" class="btn btn-primary">Edit</a>
-      <a href="#" class="btn btn-danger">Delete</a>
+    <div class="col-10">
+      <form action="">
+        <button
+          formaction="/users/{{user.id}}/edit"
+          formmethod="POST"
+          class="btn btn-primary"
+        >
+          Edit
+        </button>
+        <button
+          formaction="/users/{{user.id}}/delete"
+          formmethod="POST"
+          class="btn btn-danger"
+        >
+          Delete
+        </button>
+      </form>
     </div>
   </div>
+</div>
+{% endblock %} {% block homeBtn %}
+<div id="home-btn" class="container text-center">
+  <a href="/users" class="btn btn-sml btn-outline-secondary shadow-sm"
+    >Return to Users</a
+  >
 </div>
 {% endblock %}

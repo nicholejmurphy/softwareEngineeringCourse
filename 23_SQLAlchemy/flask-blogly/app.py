@@ -7,12 +7,13 @@ from models import db, connect_db, User
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql:///blogly"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# app.config['SQLALCHEMY_ECHO'] = True
+app.config['SQLALCHEMY_ECHO'] = True
 
 app.config['SECRET_KEY'] = 'some_value'
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 debug = DebugToolbarExtension(app)
 app.debug = True
+app.app_context().push()
 
 connect_db(app)
 db.create_all()
@@ -38,7 +39,7 @@ def show_all_users():
 def new_users_form():
     """Shows a new user form to create a new user"""
 
-    return render_template('new-user-form.html')
+    return render_template('new_user_form.html')
 
 
 @app.route('/users/new', methods=["POST"])

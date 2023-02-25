@@ -1,4 +1,4 @@
-{% extends base.html %} {% block header %}Edit A User{% endblock %} {% block
+{% extends 'base.html' %} {% block header %}Edit A User{% endblock %} {% block
 content %}
 <form href="/users/<int:id>/edit" method="POST">
   <div class="form-group">
@@ -34,4 +34,10 @@ content %}
   <button type="submit" class="btn btn-outline-info">Cancel</button>
   <button type="submit" class="btn btn-success">Save</button>
 </form>
+{% endblock %} {% block homeBtn %}
+<div id="home-btn" class="container text-center">
+  <a href="/users" class="btn btn-sml btn-outline-secondary shadow-sm"
+    >Return to Users</a
+  >
+</div>
 {% endblock %}
