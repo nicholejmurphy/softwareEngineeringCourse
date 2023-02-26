@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block header %}Post Details{% endblock %} {% block
+content %}
+<hr />
+<h2>{{post.title}}</h2>
+<p class="lead">{{post.content}}</p>
+<p class="font-italic">By {{post.user.name}}</p>
+<form>
+  <button formaction="/users/{{post.user.id}}" class="btn btn-outline-primary">
+    Cancel
+  </button>
+  <button formaction="/posts/{{post.id}}/edit" class="btn btn-primary">
+    Edit
+  </button>
+  <button
+    formaction="/posts/{{post.id}}/delete"
+    formmethod="post"
+    class="btn btn-danger"
+  >
+    Delete
+  </button>
+</form>
+{% endblock %} {% block homeBtn %}
+<div id="home-btn" class="container text-center">
+  <a href="/users" class="btn btn-sml btn-outline-secondary shadow-sm"
+    >Return to Users</a
+  >
+</div>
+{% endblock %}

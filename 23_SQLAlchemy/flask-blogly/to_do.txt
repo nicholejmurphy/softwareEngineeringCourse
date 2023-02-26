@@ -1,0 +1,6 @@
+Add testing
+make homepage
+add flash messages 
+custom 404 page
+cascade delete for user
+show friendly date

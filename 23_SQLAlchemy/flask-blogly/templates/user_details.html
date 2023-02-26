@@ -7,7 +7,7 @@ content %}
       <img src="{{user.img_url}}" alt="user-image" style="height: 100%" />
     </div>
     <div class="col-10">
-      <form action="">
+      <form>
         <button
           formaction="/users/{{user.id}}/edit"
           formmethod="POST"
@@ -24,6 +24,21 @@ content %}
         </button>
       </form>
     </div>
+  </div>
+  <div class="list-group">
+    <h5 class="pl-3 py-2 mb-0 bg-light text-dark">Posts:</h5>
+    {% for post in posts %}
+    <a
+      href="/posts/{{post.id}}"
+      class="list-group-item list-group-item-action text-primary"
+      >{{post.title}}</a
+    >
+    {% endfor %}
+    <a
+      href="/users/{{user.id}}/posts/new"
+      class="list-group-item list-group-item-action bg-primary text-light text-center p-1"
+      >Add Post</a
+    >
   </div>
 </div>
 {% endblock %} {% block homeBtn %}

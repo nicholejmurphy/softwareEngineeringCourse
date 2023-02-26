@@ -52,19 +52,65 @@ class UserViewsTestCase(TestCase):
             self.assertEqual(resp.status_code, 200)
             self.assertIn('Nicky', html)
 
-    def test_show_pet(self):
+    def test_new_users_form(self):
         with app.test_client() as client:
-            resp = client.get(f"/{self.pet_id}")
+            resp = client.get('/users/new')
             html = resp.get_data(as_text=True)
 
             self.assertEqual(resp.status_code, 200)
-            self.assertIn('<h1>TestPet</h1>', html)
+            self.assertIn('Create A User', html)
 
-    def test_add_pet(self):
+    def test_add_new_user(self):
         with app.test_client() as client:
-            d = {"name": "TestPet2", "species": "cat", "hunger": 20}
-            resp = client.post("/", data=d, follow_redirects=True)
+            form_data = {"first-name": "Liam", "last-name": "Harris",
+                         'img-url': "https://www.freeiconspng.com/uploads/icon-user-blue-symbol-people-person-generic--public-domain--21.png"}
+            resp = client.post("/users/new", data=form_data,
+                               follow_redirects=True)
             html = resp.get_data(as_text=True)
 
             self.assertEqual(resp.status_code, 200)
-            self.assertIn("<h1>TestPet2</h1>", html)
+            self.assertIn("Liam Harris", html)
+
+    def test_user_page(self):
+        with app.test_client() as client:
+            resp = client.get(f'/users/{self.user_id}')
+            html = resp.get_data(as_text=True)
+
+            self.assertEqual(resp.status_code, 200)
+            self.assertIn('Nicky Murphy', html)
+
+    def test_user_page_404(self):
+        with app.test_client() as client:
+            resp = client.get(f'/users/{28002}')
+
+            self.assertEqual(resp.status_code, 404)
+
+    def test_edit_user(self):
+        with app.test_client() as client:
+            resp = client.get(f'/users/{self.user_id}/edit')
+            html = resp.get_data(as_text=True)
+            # import pdb
+            # pdb.set_trace()
+            self.assertEqual(resp.status_code, 200)
+            self.assertIn('Nicky', html)
+            self.assertIn('Edit A User', html)
+
+    def test_submit_edited_user(self):
+        with app.test_client() as client:
+            form_data = {"first-name": "Liam", "last-name": "Murphy",
+                         'img-url': "https://www.freeiconspng.com/uploads/icon-user-blue-symbol-people-person-generic--public-domain--21.png"}
+            resp = client.post(f"/users/{self.user_id}/edit", data=form_data,
+                               follow_redirects=True)
+            html = resp.get_data(as_text=True)
+
+            self.assertEqual(resp.status_code, 200)
+            self.assertIn("Liam Murphy", html)
+
+    def test_delete_user(self):
+        with app.test_client() as client:
+            resp = client.post(f"/users/{self.user_id}/delete",
+                               follow_redirects=True)
+            html = resp.get_data(as_text=True)
+
+            self.assertEqual(resp.status_code, 200)
+            self.assertNotIn("Nicky Murphy", html)
