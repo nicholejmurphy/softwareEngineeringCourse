@@ -19,6 +19,8 @@ app.app_context().push()
 connect_db(app)
 db.create_all()
 
+###### HOME VIEW FUNCTION #######
+
 
 @app.route('/')
 def home_page():
@@ -103,8 +105,8 @@ def delete_user(user_id):
 
     return redirect('/users')
 
-
 ###### POSTS VIEW FUNCTIONS #######
+
 
 @app.route('/posts/<int:post_id>')
 def show_post(post_id):
