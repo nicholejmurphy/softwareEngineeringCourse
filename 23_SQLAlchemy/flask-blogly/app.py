@@ -1,14 +1,14 @@
 """Blogly application."""
 
-from flask import Flask, request, redirect, render_template
+from flask import Flask, request, redirect, flash, render_template
 from flask_debugtoolbar import DebugToolbarExtension
 import time
-from models import db, connect_db, User, Post
+from models import db, connect_db, User, Post, desc
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql:///blogly"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_ECHO'] = True
+app.config['SQLALCHEMY_ECHO'] = False
 
 app.config['SECRET_KEY'] = 'some_value'
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
@@ -27,7 +27,9 @@ def home_page():
     """Redirects users to the home page"""
 
     users = User.query.all()
-    return render_template('base.html', users=users)
+    posts = Post.query.order_by(desc(Post.id)).limit(5).all()
+
+    return render_template('base.html', users=users, posts=posts)
 
 
 ###### USERS VIEW FUNCTIONS #######
@@ -37,10 +39,10 @@ def show_all_users():
     """Shows a list of all users in the database"""
 
     users = User.query.order_by(User.last_name, User.first_name).all()
-    return render_template('base.html', users=users)
+    return render_template('users.html', users=users)
 
 
-@app.route('/users/new', methods=["GET"])
+@app.route('/users/new')
 def new_users_form():
     """Shows a new user form to create a new user"""
 
@@ -57,6 +59,7 @@ def add_new_user():
     db.session.add(new_user)
     db.session.commit()
 
+    flash(f"New user: {new_user.full_name} successfully created", "success")
     return redirect('/users')
 
 
@@ -70,7 +73,7 @@ def user_page(user_id):
     return render_template('user_details.html', user=user, posts=posts)
 
 
-@app.route('/users/<int:user_id>/edit', methods=["GET"])
+@app.route('/users/<int:user_id>/edit')
 def edit_user(user_id):
     """Shows user edit form"""
 
@@ -91,7 +94,8 @@ def submit_edited_user(user_id):
     db.session.add(user)
     db.session.commit()
 
-    return redirect('/users')
+    flash(f"User: {user.full_name} has been successfully updated", "success")
+    return redirect(f'/users/{user_id}')
 
 
 @app.route('/users/<int:user_id>/delete', methods=["POST"])
@@ -103,6 +107,7 @@ def delete_user(user_id):
     db.session.delete(user)
     db.session.commit()
 
+    flash(f"User: {user.full_name} has been successfully deleted", "warning")
     return redirect('/users')
 
 ###### POSTS VIEW FUNCTIONS #######
@@ -137,6 +142,7 @@ def submit_new_post(user_id):
     db.session.add(post)
     db.session.commit()
 
+    flash(f"{post.title} has been successfully posted", "success")
     return redirect(f'/users/{user.id}')
 
 
@@ -161,6 +167,7 @@ def submit_edited_post(post_id):
     db.session.add(post)
     db.session.commit()
 
+    flash(f"{post.title} has been successfully updated", "success")
     return redirect(f'/users/{user_id}')
 
 
@@ -173,4 +180,5 @@ def delete_post(post_id):
     db.session.delete(post)
     db.session.commit()
 
+    flash(f"{post.title} has been successfully deleted", "warning")
     return redirect(f"/users/{post.user_id}")

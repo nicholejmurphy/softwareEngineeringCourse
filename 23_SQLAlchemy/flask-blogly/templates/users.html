@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block header %}Users{% endblock %} {% block content
+%}
+<div class="list-group">
+  {% for user in users %}
+  <a href="/users/{{user.id}}" class="list-group-item list-group-item-action"
+    >{{user.full_name}}</a
+  >
+  {% endfor %}
+</div>
+<div class="container text-center mt-3">
+  <a href="/users/new" class="btn btn-info px-3 mx-2">Add User</a
+  ><a href="/" class="btn btn btn-outline-secondary shadow-sm">Return Home</a>
+</div>
+{% endblock %} {% block homeBtn %}{% endblock %}
