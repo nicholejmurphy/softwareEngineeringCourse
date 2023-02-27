@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block header %}Tags{% endblock %} {% block content
+%}
+<div class="list-group">
+  {% for tag in tags %}
+  <a
+    href="/tags/{{tag.id}}"
+    class="list-group-item list-group-item list-group-item-action"
+  >
+    #{{tag.name}}
+  </a>
+  {% endfor %}
+</div>
+<div class="container text-center mt-3">
+  <a href="/tags/new" class="btn btn-info px-3 mx-2">Add Tag</a
+  ><a href="/" class="btn btn btn-outline-secondary shadow-sm">Return Home</a>
+</div>
+{% endblock %} {% block homeBtn %}{% endblock %}

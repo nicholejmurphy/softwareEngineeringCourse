@@ -16,7 +16,7 @@ def connect_db(app):
 
 
 class User(db.Model):
-    """Users Model"""
+    """Users. Representation of each user who can post and tag their posts."""
 
     __tablename__ = "users"
 
@@ -45,7 +45,7 @@ class User(db.Model):
 
 
 class Post(db.Model):
-    """Posts model"""
+    """Posts. Created by a user and added to their users page"""
 
     __tablename__ = "posts"
 
@@ -58,6 +58,28 @@ class Post(db.Model):
                            default=datetime.now())
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
+    tags = db.relationship('Tag', secondary='posts_tags', backref='posts')
+
     def __repr__(self):
         p = self
         return f"<Post id={p.id} title={p.title} user_id={p.user_id}"
+
+
+class Tag(db.Model):
+    """Tags. Can be assigned to an individual post."""
+
+    __tablename__ = "tags"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.Text, nullable=False, unique=True)
+
+
+class PostTag(db.Model):
+    """Relationships between tags and posts."""
+
+    __tablename__ = "posts_tags"
+
+    post_id = db.Column(db.Integer, db.ForeignKey(
+        'posts.id'), primary_key=True)
+    tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'),
+                       primary_key=True)

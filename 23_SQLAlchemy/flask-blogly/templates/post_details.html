@@ -4,6 +4,17 @@ content %}
 <h2>{{post.title}}</h2>
 <p class="lead">{{post.content}}</p>
 <p class="font-italic">By {{post.user.full_name}} on {{post.created_at}}</p>
+<div class="btn-group mb-3" role="group" aria-label="Post tags">
+  {% for tag in post.tags %}
+  <a
+    href="/tags/{{tag.id}}"
+    type="button"
+    class="btn btn-sm btn-outline-secondary px-2 py-0 mb-2"
+  >
+    #{{tag.name}}
+  </a>
+  {% endfor %}
+</div>
 <form>
   <button formaction="/users/{{post.user.id}}" class="btn btn-outline-primary">
     Back

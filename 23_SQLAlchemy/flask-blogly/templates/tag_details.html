@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block header %}Tag Details{% endblock %} {% block
+content %}
+
+<h2>#{{tag.name}}</h2>
+<p class="lead">Featured in the following posts:</p>
+<div class="list-group">
+  {% for post in tag.posts %}
+  <a href="/posts/{{post.id}}" class="list-group-item list-group-item-action">
+    {{post.title}}
+  </a>
+  {% endfor %}
+</div>
+<form class="mt-3">
+  <button formaction="/tags" class="btn btn-outline-primary">Back</button>
+  <button formaction="/tags/{{tag.id}}/edit" class="btn btn-primary">
+    Edit
+  </button>
+  <button
+    formaction="/tags/{{tag.id}}/delete"
+    formmethod="post"
+    class="btn btn-danger"
+  >
+    Delete
+  </button>
+</form>
+{% endblock %} {% block homeBtn %} {% endblock %}

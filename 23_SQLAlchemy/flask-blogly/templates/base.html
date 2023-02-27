@@ -43,7 +43,18 @@
               {{post.created_at}}
             </p>
             <p class="card-text">{{post.content}}</p>
-            <a href="/posts/{{post.id}}" class="card-link">View Post</a>
+            <div class="btn-group" role="group" aria-label="Post tags">
+              {% for tag in post.tags %}
+              <a
+                href="/tags/{{tag.id}}"
+                type="button"
+                class="btn btn-sm btn-outline-secondary px-2 py-0 mb-2"
+              >
+                #{{tag.name}}
+              </a>
+              {% endfor %}
+            </div>
+            <br /><a href="/posts/{{post.id}}" class="card-link">View Post</a>
           </div>
         </div>
       </div>
@@ -54,6 +65,7 @@
     {% block homeBtn %}
     <div class="container text-center mt-1 mb-4">
       <a href="/users" class="btn btn-light btn-lg px-5">Go to Users</a>
+      <a href="/tags" class="btn btn-light btn-lg px-5">Go to Tags</a>
     </div>
     {% endblock %}
 
